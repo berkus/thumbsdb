@@ -82,7 +82,7 @@ impl<'ole> ThumbsDb<'ole> {
   /// let mut hidden_thumbsdb =
   ///     thumbsdb::ThumbsDb::from_path("assets/Thumbs.db").unwrap();
   /// ```
-  pub fn from_path(path: &str) -> Result<ThumbsDb, Box<std::error::Error>> {
+  pub fn from_path(path: &str) -> Result<ThumbsDb, Box<dyn std::error::Error>> {
     match std::fs::File::open(path) {
       Ok(f) => match ThumbsDb::new(f) {
         Ok(t) => Ok(t),
