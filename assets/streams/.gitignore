@@ -3,3 +3,4 @@ Catalog
 *.jpg
 *.png
 *.gif
+{*}
