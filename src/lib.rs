@@ -60,10 +60,10 @@ mod catalog;
 mod util;
 mod thumbnail;
 mod iterator;
-pub use thumbsdb::ThumbsDb;
-pub use error::Error;
-pub use thumbnail::Thumbnail;
-pub use iterator::ThumbnailIterator;
+pub use crate::thumbsdb::ThumbsDb;
+pub use crate::error::Error;
+pub use crate::thumbnail::Thumbnail;
+pub use crate::iterator::ThumbnailIterator;
 
 
 #[cfg(test)]

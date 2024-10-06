@@ -9,6 +9,7 @@ keywords = ["thumbs", "thumbnail", "thumbsdb"]
 categories = ["parser-implementations", "parsing"]
 repository = "https://github.com/zadlg/thumbsdb.git"
 readme = "README.md"
+edition = "2018"
 
 [lib]
 name = "thumbsdb"
