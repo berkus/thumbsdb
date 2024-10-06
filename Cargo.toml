@@ -15,5 +15,5 @@ readme = "README.md"
 edition = "2021"
 
 [dependencies]
-ole = "0.1.14"
+ole = "0.1.15"
 thiserror = "1.0.64"
