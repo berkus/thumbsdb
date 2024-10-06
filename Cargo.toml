@@ -1,0 +1,17 @@
+[package]
+name = "thumbsdb"
+version = "0.1.2"
+authors = ["Thomas BAILLEUX <thomas@bailleux.me>"]
+license = "WTFPL"
+description = "Forensic library: parser and reader for Microsoft Thumbs.db file"
+homepage = "https://github.com/zadlg/thumbsdb"
+keywords = ["thumbs", "thumbnail", "thumbsdb"]
+categories = ["parser-implementations", "parsing"]
+repository = "https://github.com/zadlg/thumbsdb.git"
+readme = "README.md"
+
+[lib]
+name = "thumbsdb"
+
+[dependencies]
+ole = "0.1.14"
