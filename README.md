@@ -9,21 +9,13 @@ A simple parser and reader for Microsoft Thumbs.db files.
 This includes a basic parser, which validates the format of the given file, and
 a reader for extracting thumbnails.
 
-This library will be used in a global forensic computing library very soon.
-
 ## Usage
 
 Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-thumbsdb = "0.1.2"
-```
-
-and this to your crate root:
-
-```rust
-extern crate thumbsdb;
+thumbsdb = "0.1"
 ```
 
 ## Example
@@ -51,9 +43,9 @@ for thumbnail in thumbs.iterate() {
 
 Release notes are available in [RELEASES.md](RELEASES.md).
 
-## Compatibility
+## MSRV
 
-`thumbsdb` seems to work for rust 1.9 and greater.
+cargo-msrv says `thumbsdb` works with rust 1.61 and greater.
 
 ## License
 
