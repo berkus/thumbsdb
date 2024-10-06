@@ -14,55 +14,30 @@
 //
 // Author: zadig <thomas chr(0x40) bailleux.me>
 
-use std;
 use ole;
+use thiserror::Error;
 
 /// Errors related to the process of parsing and reading.
-#[derive(Debug)]
+#[derive(Debug, Error)]
 pub enum Error {
+    /// This happens if an error occured with OLE.
+    #[error("OLE error {0}")]
+    OLEError(#[from] ole::Error),
 
-  /// This happens if an error occured with OLE.
-  OLEError(ole::Error),
+    /// This happens if the given file isn't a Thumbs.db file.
+    #[error("This file doesn't seem to be a Thumbs.db")]
+    NotThumbsDbFile,
 
-  /// This happens if the given file isn't a Thumbs.db file.
-  NotThumbsDbFile,
+    /// Classic std::io::Error.
+    #[error("IO error {0}")]
+    IOError(std::io::Error),
 
-  /// Classic std::io::Error.
-  IOError(std::io::Error),
+    /// This happens if a thumbnail isn't a JPEG file.
+    #[error("This thumbnail is not a JPEG file")]
+    NotJPEGFile,
 
-  /// This happens if a thumbnail isn't a JPEG file.
-  NotJPEGFile,
-
-  /// This happens if a thumbnail is declared inside the Catalog entry, but
-  /// The entry doesn't actually exist inside the Thumbs.db.
-  NoEntryAssociated
-}
-
-impl std::error::Error for Error {
-  fn description(&self) -> &str {
-    match *self {
-      Error::OLEError(ref e) => e.description(),
-      Error::NotThumbsDbFile => "This file doesn't seem to be a Thumbs.db",
-      Error::IOError(ref e) => e.description(),
-      Error::NotJPEGFile => "This thumbnail is not a JPEG file",
-      Error::NoEntryAssociated => "Unable to find an entry for this thumbnail"
-    }
-  }
-
-  fn cause(&self) -> Option<&dyn std::error::Error> {
-    match *self {
-      Error::OLEError(ref e) => Some(e),
-      Error::NotThumbsDbFile => None,
-      Error::IOError(ref e) => Some(e),
-      Error::NotJPEGFile => None,
-      Error::NoEntryAssociated => None
-    }
-  }
-}
-
-impl std::fmt::Display for Error {
-  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    use std::error::Error;
-    write!(f, "{}", self.description())
-  }
+    /// This happens if a thumbnail is declared inside the Catalog entry, but
+    /// The entry doesn't actually exist inside the Thumbs.db.
+    #[error("Unable to find an entry for this thumbnail")]
+    NoEntryAssociated,
 }

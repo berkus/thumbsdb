@@ -16,3 +16,4 @@ name = "thumbsdb"
 
 [dependencies]
 ole = "0.1.14"
+thiserror = "1.0.64"
